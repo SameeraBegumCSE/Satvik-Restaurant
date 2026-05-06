@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+.hookSet {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding: 6vh 8vw 8vh 8vw;
+}
+
+.sattvaImg {
+  border-radius: 50%;
+  width: 1000px;
+  height: 700px;
+  margin-left: 5px;
+}
+
+/* Heading Gradient */
+.CatalogueHead {
+  font-size: 50px;
+  text-align: center;
+  font-weight: 1000;
+  background: linear-gradient(90deg, #00dbde, #fc00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Catalogue Hook Styling (All Screen Sizes) */
+.catalogueHook {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.catalogueHook p {
+  font-size: 28px;
+  font-weight: 500;
+  color: #333;
+  margin: 15px 0;
+  line-height: 1.4;
+}
+
+/* Responsive Adjustments */
+@media(max-width: 1000px) {
+  .hookSet {
+    flex-direction: column;
+  }
+
+  .sattvaImg {
+    width: 300px;
+    height: auto;
+  }
+
+  .catalogueHook p {
+    font-size: 22px;
+  }
+}

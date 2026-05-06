@@ -1,0 +1,132 @@
+.navCover {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 95%;       /* Optional: to slightly shrink width for visible rounding */
+  margin: 10px auto; /* Center the navbar horizontally */
+  border-radius: 30px; /* Adjust the radius as desired */
+  overflow: hidden; /* Ensures content doesn't overflow the rounded corners */
+}
+
+
+.logoTabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  position: relative;
+}
+
+.logoDiv {
+  display: flex;
+  align-items: center;
+}
+
+.mainLogo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.right {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.right li a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.right li a:hover,
+.logoutButton:hover {
+  color:#56C1A1;
+}
+
+.logoutButton {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cartLink {
+  display: flex;
+  align-items: center;
+}
+
+.cartIcon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.toggle .line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.toggle .line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.toggle .line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .right {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: inherit;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .right.active {
+    display: flex;
+    flex-direction: column;
+  background-color: #2e7d65;
+  border-bottom: 1px solid #fff;
+  gap: 15px;
+  padding: 15px 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .cartLink { 
+    position: absolute;
+    top: 18px;
+    right: 50px;
+  }
+}

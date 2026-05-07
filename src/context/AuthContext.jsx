@@ -1,50 +1,53 @@
 import { createContext, useReducer, useEffect, useContext } from "react";
 import { auth, provider } from "../firebase/config";
-import { signInWithPopup } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
- import { signInWithRedirect } from "firebase/auth";
- // Create context
- export const AuthContext = createContext();
+import { onAuthStateChanged, signInWithRedirect } from "firebase/auth";
 
- const authReducer = (state, action) => {
-   switch (action.type) {
-     case "LOGIN":
-       return { ...state, user: action.payload };
-     case "LOGOUT":
-       return { ...state, user: null };
-     case "AUTH_IS_READY":
-       return { ...state, user: action.payload, authIsReady: true };
-     default:
-       return state;
-   }
- };
+// Create context
+export const AuthContext = createContext();
 
- export const UserAuth = () => {
-   return useContext(AuthContext);
- };
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case "LOGIN":
+      return { ...state, user: action.payload };
 
- export const AuthContextProvider = ({ children }) => {
-   const [state, dispatch] = useReducer(authReducer, {
-     user: null,
-     authIsReady: false,
-   });
+    case "LOGOUT":
+      return { ...state, user: null };
 
-   const googleSignIn = () => {
-     return signInWithRedirect(auth, provider).catch((err) => {
-       console.error("Google Sign-in Error:", err.message);
-     });
-   };
-   useEffect(() => {
-     const unsub = onAuthStateChanged(auth, (user) => {
-       dispatch({ type: "AUTH_IS_READY", payload: user });
-     });
+    case "AUTH_IS_READY":
+      return { ...state, user: action.payload, authIsReady: true };
 
-     return () => unsub();
-   }, []);
+    default:
+      return state;
+  }
+};
 
-   return (
-     <AuthContext.Provider value={{ ...state, dispatch, googleSignIn }}>
-       {children}
-     </AuthContext.Provider>
-   );
- };
+export const UserAuth = () => {
+  return useContext(AuthContext);
+};
+
+export const AuthContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
+    authIsReady: false,
+  });
+
+  const googleSignIn = () => {
+    return signInWithRedirect(auth, provider).catch((err) => {
+      console.error("Google Sign-in Error:", err.message);
+    });
+  };
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      dispatch({ type: "AUTH_IS_READY", payload: user });
+    });
+
+    return () => unsub();
+  }, []);
+
+  return (
+    <AuthContext.Provider value={{ ...state, dispatch, googleSignIn }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

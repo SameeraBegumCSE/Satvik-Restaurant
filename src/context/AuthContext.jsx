@@ -1,8 +1,7 @@
 import { createContext, useReducer, useEffect, useContext } from "react";
 import { auth, provider } from "../firebase/config";
-import { onAuthStateChanged, signInWithRedirect } from "firebase/auth";
+import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
-// Create context
 export const AuthContext = createContext();
 
 const authReducer = (state, action) => {
@@ -32,9 +31,13 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const googleSignIn = () => {
-    return signInWithRedirect(auth, provider).catch((err) => {
-      console.error("Google Sign-in Error:", err.message);
-    });
+    return signInWithPopup(auth, provider)
+      .then((res) => {
+        dispatch({ type: "LOGIN", payload: res.user });
+      })
+      .catch((err) => {
+        console.error("Google Sign-in Error:", err.message);
+      });
   };
 
   useEffect(() => {

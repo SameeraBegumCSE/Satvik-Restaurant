@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
-import { useTheme } from '../../context/ThemeContext';
+import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { useTheme } from "../../context/ThemeContext";
 import founderImage from "../../images/founder.jpg";
 
 export default function About() {
@@ -11,9 +11,10 @@ export default function About() {
     setIsVisible(true);
   }, []);
 
-  const restaurantImage1 = "https://images.unsplash.com/photo-1728891715962-ffee8c61e38e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwZGluaW5nJTIwcm9vbSUyMGF0bW9zcGhlcmV8ZW58MXx8fHwxNzU1OTI1NzM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-  const restaurantImage2 = "https://images.unsplash.com/photo-1743793055775-3c07ab847ad0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwZGluaW5nJTIwcm9vbSUyMGF0bW9zcGhlcmV8ZW58MXx8fHwxNzU1OTI1NzM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-
+  const restaurantImage1 =
+    "https://images.unsplash.com/photo-1728891715962-ffee8c61e38e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwZGluaW5nJTIwcm9vbSUyMGF0bW9zcGhlcmV8ZW58MXx8fHwxNzU1OTI1NzM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+  const restaurantImage2 =
+    "https://images.unsplash.com/photo-1743793055775-3c07ab847ad0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGVnYW50JTIwZGluaW5nJTIwcm9vbSUyMGF0bW9zcGhlcmV8ZW58MXx8fHwxNzU1OTI1NzM4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -21,24 +22,24 @@ export default function About() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50 
+    hidden: {
+      opacity: 0,
+      y: 50,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
